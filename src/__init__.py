@@ -13,10 +13,10 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-    Blueprint('temperature', __name__)
+    base_url = Blueprint('temperature', __name__)
 
 
-    @app.route("/<string:city>")
+    @base_url.route("/<string:city>")
     def home(city):
         temp_city = WeatherService()
         temperatura = temp_city.city_temperature(city)
